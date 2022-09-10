@@ -12,7 +12,7 @@ services:
     hostname: master01
     command: ["/usr/sbin/sshd","-D"]
     volumes:
-      - ansible_vol:/var/ans
+      - ansible_vol:/var/ansible
   host:
     links:
       - base
@@ -21,9 +21,9 @@ services:
     image: ansible_host
     container_name: host01
     hostname: host01
-    command: ["/var/run.sh"]
+    command: ["/var/ssh.sh"]
     volumes:
-     - ansible_vol:/var/ans
+     - ansible_vol:/var/ansible
   host02:
     links:
       - base
@@ -32,9 +32,9 @@ services:
     image: ansible_host
     container_name: host02
     hostname: host02
-    command: ["/var/run.sh"]
+    command: ["/var/ssh.sh"]
     volumes:
-     - ansible_vol:/var/ans
+     - ansible_vol:/var/ansible
   host03:
     links:
       - base
