@@ -1,0 +1,7 @@
+---
+- hosts: ubuntu
+  tasks:
+    - name: uninstall nginx
+      apt: 
+        name: nginx
+        state: absent
