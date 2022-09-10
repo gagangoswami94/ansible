@@ -34,7 +34,7 @@ Passphrase can be changed in [lab-setup/master_setup/Dockerfile](./lab-setup/mas
 
 Run a [sample ansible playbook](lab-setup/master_setup/sample/ping.yaml) that checks connection between master and hosts:
 
-`ansible-playbook -i inventory ping_all.yml`
+`ansible-playbook -i inventory ping.yaml`
 
 
 Type: `yes` (three times)
