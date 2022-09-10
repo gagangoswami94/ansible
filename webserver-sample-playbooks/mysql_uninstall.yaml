@@ -1,0 +1,20 @@
+---
+- hosts: ubuntu
+  tasks:
+    - name: install mysql server 
+      apt:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+       - mysql-server  
+
+      #      apt: name={{items}} state=present update_cache=yes
+      # with_items:
+      #  - mysql-server
+
+
+    - name: start mysql service
+      service:
+        name: mysql
+        state: started
+        enabled: yes     

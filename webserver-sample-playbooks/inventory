@@ -1,0 +1,8 @@
+[lb]
+#host01 ansible_user=root ansible_ssh_private_key_file=/var/ansible/master_key
+host01 ansible_user=root ansible_ssh_private_key_file=/var/ansible/master_key
+[webserver]
+host02 ansible_user=root ansible_ssh_private_key_file=/var/ansible/master_key
+host03 ansible_user=root ansible_ssh_private_key_file=/var/ansible/master_key
+#[db]
+#host03 ansible_user=root ansible_ssh_private_key_file=/var/ansible/master_key

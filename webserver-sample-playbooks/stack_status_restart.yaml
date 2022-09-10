@@ -1,0 +1,20 @@
+---
+- hosts: lb
+  tasks:
+    - service: name=nginx state=stopped
+    - wait_for: port=80 state=drained
+
+
+- hosts: webserver
+  tasks:
+    - service: name=apache2 state=stopped
+    - wait_for: port=80 state=stopped  
+      # restart all the services
+- hosts: lb
+  tasks:
+    - service: name=nginx state=started
+    - wait_for: port=80 state=started
+- hosts: webserver
+  tasks:
+    - service: name=apache2 state=started
+    - wait_for: port=80 state=started

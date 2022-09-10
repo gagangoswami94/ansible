@@ -1,0 +1,19 @@
+---
+- hosts: lb
+  tasks:
+    - command: service nginx status
+    - wait_for: port=80 timeout=1
+- hosts: webserver
+  tasks:
+    - command: service apache2 status
+    - wait_for: port=80 timeout=1
+
+- hosts: lb
+  tasks:
+    - name: verify backend response
+      uri: url=http://{{ item }} return_content=yes
+      with_items: "{{groups.webserver}}"
+      register: data
+    - fail: msg="not correct content"  
+      when: "' this is ansible {{item.item}}' not in item.content"
+      with_items: "{{data.results}}"
